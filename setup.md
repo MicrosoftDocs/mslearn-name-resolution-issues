@@ -328,3 +328,5 @@ Set-AzVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.8 `
     -SettingString $settingString;
+    
+printf "*********************** Lab Environment Created *********************\n\n"
