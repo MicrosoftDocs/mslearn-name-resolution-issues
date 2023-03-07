@@ -1,5 +1,5 @@
-# v1.0.4  
-#2022-03-11
+# v1.0.5  
+#2023-03-07
 
 # Variables
 [string] $vnetName1 = "VNet1";
@@ -41,9 +41,20 @@
 
 
 # Get resource group
-# The subscription should contain just one empty resource group
-$resourceGroup = (Get-AzResourceGroup)[0];
+# The subscription should contain just one empty resource group - if this is running in the sanbox
+# Unfortunatley we have had to ask learner to use their own subscriptions, so have to create a new RG
+# $resourceGroup = (Get-AzResourceGroup)[0];
 
+# Define the resource group parameters
+[string] $resourceGroupName = "sandbox-rg";
+[string] $location = "East US"
+ 
+# Create the resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+ 
+# Get resource group
+# The subscription should contain just one empty resource group
+$resourceGroup = Get-AzResourceGroup -Name $resourceGroupName;
 
 # Create VNet1
 $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnetName1 -AddressPrefix $addressPrefixSubnet1;
