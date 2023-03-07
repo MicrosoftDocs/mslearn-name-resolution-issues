@@ -39,6 +39,7 @@
 [string] $publicIpAdName2 = "VM2-ip";
 [string] $publicIpAdName3 = "VM3-ip";
 
+Update-AzConfig -DisplayBreakingChangeWarning $false
 
 # Get resource group
 # The subscription should contain just one empty resource group - if this is running in the sanbox
@@ -342,3 +343,4 @@ Set-AzVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.8 `
     -SettingString $settingString;
+    
